@@ -9,7 +9,7 @@ class Case2 extends StatefulWidget {
 }
 
 class _Case2State extends State<Case2> {
-  var items = List.generate(100000, (index) => 'Item $index');
+  var items = List.generate(10000, (index) => 'Item $index');
 
   @override
   Widget build(BuildContext context) {
