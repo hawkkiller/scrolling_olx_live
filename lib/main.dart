@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:scrolling_olx_live/case1.dart';
+import 'package:scrolling_olx_live/case2.dart';
 
 void main() {
   runApp(const MainApp());
@@ -73,7 +74,7 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   Case1(),
-                  Center(child: Text('Content for Case 2')),
+                  Case2(),
                   Center(child: Text('Content for Case 3')),
                   Center(child: Text('Content for Case 4')),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// SingleChildScrollView with large content
 class Case1 extends StatelessWidget {
   const Case1({super.key});
 
