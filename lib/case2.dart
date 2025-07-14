@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// ListView (without builder) with large content.
-/// Also, talk about [ListView.itemExtent] property.
+/// Also, talk about [ListView.itemExtent]
 class Case2 extends StatefulWidget {
   const Case2({super.key});
 
@@ -10,29 +10,29 @@ class Case2 extends StatefulWidget {
 }
 
 class _Case2State extends State<Case2> {
-  var items = List.generate(100000, (index) => 'Item $index');
+  var items = List.generate(10000, (index) => 'Item $index');
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemExtent: 60,
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return ListTile(
-          key: ValueKey(item),
-          title: Text(item),
-          subtitle: Text('Subtitle for $item'),
-          leading: IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () {
-              setState(() {
-                items.remove(item);
-              });
-            },
+    return ListView(
+      children: [
+        Text('Hello World!'),
+        SizedBox(height: 20),
+        for (final item in items)
+          ListTile(
+            key: ValueKey(item),
+            title: Text(item),
+            subtitle: Text('Subtitle for $item'),
+            leading: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                setState(() {
+                  items.remove(item);
+                });
+              },
+            ),
           ),
-        );
-      },
+      ],
     );
   }
 }
