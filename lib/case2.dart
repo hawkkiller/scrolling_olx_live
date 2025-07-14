@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// ListView with large content.
+/// ListView (without builder) with large content.
 class Case2 extends StatefulWidget {
   const Case2({super.key});
 
