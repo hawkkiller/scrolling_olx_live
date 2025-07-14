@@ -12,42 +12,55 @@ class Case4 extends StatelessWidget {
       padding: const EdgeInsets.all(32),
       child: ListView(
         children: [
-          SizedBox(
-            height: 200,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 20,
-              itemBuilder:
-                  (context, index) => Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text('Item ${index + 31}'),
-                    ),
+          for (final section in sections)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    section.title,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
+                ),
+                ...section.items.map(
+                  (item) => ListTile(
+                    title: Text(item.title),
+                    subtitle: Text(item.description),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const Text(
-            'Section 1',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          ...List.generate(10, (index) => ListTile(title: Text('Item ${index + 1}'))),
-          const SizedBox(height: 32),
-          const Text(
-            'Section 2',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          ...List.generate(10, (index) => ListTile(title: Text('Item ${index + 11}'))),
-          const SizedBox(height: 32),
-          const Text(
-            'Section 3',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
-          ...List.generate(10, (index) => ListTile(title: Text('Item ${index + 21}'))),
         ],
       ),
     );
   }
+}
+
+final sections = List<Section>.generate(
+  10,
+  (index) => Section(
+    title: 'Section $index',
+    items: List<SectionItem>.generate(
+      10,
+      (index) => SectionItem(
+        title: 'Item $index',
+        description: 'Description $index',
+      ),
+    ),
+  ),
+);
+
+class Section {
+  const Section({required this.title, required this.items});
+
+  final String title;
+  final List<SectionItem> items;
+}
+
+class SectionItem {
+  const SectionItem({required this.title, required this.description});
+
+  final String title;
+  final String description;
 }
