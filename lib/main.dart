@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:scrolling_olx_live/case1.dart';
-import 'package:scrolling_olx_live/case2.dart';
-import 'package:scrolling_olx_live/case3.dart';
-import 'package:scrolling_olx_live/case4.dart';
+import 'package:scrolling_olx_live/case_1.dart';
+import 'package:scrolling_olx_live/case_2.dart';
+import 'package:scrolling_olx_live/case_3.dart';
+import 'package:scrolling_olx_live/case_4.dart';
 
 void main() {
   runApp(const MainApp());

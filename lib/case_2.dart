@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// ListView (without builder) with large content.
-/// Also, talk about [ListView.itemExtent]
+///
+/// Replace with [ListView.builder], talk about [ListView.itemExtent];
+/// Use [CustomScrollView] for implementing the same layout.
 class Case2 extends StatefulWidget {
   const Case2({super.key});
 

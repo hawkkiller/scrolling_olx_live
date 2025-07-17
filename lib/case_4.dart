@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 /// - Padding applied to the entire screen.
 /// - Sticky headers for each section.
 /// - Each section has a title and a list of items.
+/// 
+/// Replace with [CustomScrollView], [SliverList], [SliverMainAxisGroup], [SliverAppBar].
 class Case4 extends StatelessWidget {
   const Case4({super.key});
 

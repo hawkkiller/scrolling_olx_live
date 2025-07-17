@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// ListView with horizontal scroll and a vertical list
+/// 
+/// Replace with [CustomScrollView].
 class Case3 extends StatefulWidget {
   const Case3({super.key});
 
@@ -21,10 +23,6 @@ class _Case3State extends State<Case3> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        AppBar(
-          title: Text('Case 3'),
-          backgroundColor: Colors.blue,
-        ),
         Text('Hello World!'),
         SizedBox(height: 20),
         SizedBox(
@@ -47,7 +45,7 @@ class _Case3State extends State<Case3> {
             },
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 24),
         ListView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
