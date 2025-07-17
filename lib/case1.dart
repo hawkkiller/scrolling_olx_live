@@ -6,22 +6,20 @@ class Case1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text('Hello World!'),
-                SizedBox(height: 20),
-                for (int i = 0; i < 5000; i++)
-                  ListTile(
-                    title: Text('Item $i'),
-                    subtitle: Text('Subtitle for item $i'),
-                  ),
-              ],
-            ),
-          ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Text('Hello World!'),
+        ),
+        SliverPadding(padding: EdgeInsets.all(20)),
+        SliverList.builder(
+          itemCount: 5000,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('Item $index'),
+              subtitle: Text('Subtitle for item $index'),
+            );
+          },
         ),
       ],
     );

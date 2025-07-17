@@ -8,31 +8,30 @@ class Case4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: ListView(
-        children: [
-          for (final section in sections)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Text(
-                    section.title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                ...section.items.map(
-                  (item) => ListTile(
+    return CustomScrollView(
+      slivers: [
+        for (final section in sections)
+          SliverMainAxisGroup(
+            slivers: [
+              SliverAppBar(
+                pinned: true,
+                floating: true,
+                primary: false,
+                title: Text(section.title),
+              ),
+              SliverList.builder(
+                itemBuilder: (context, index) {
+                  final item = section.items[index];
+                  return ListTile(
                     title: Text(item.title),
                     subtitle: Text(item.description),
-                  ),
-                ),
-              ],
-            ),
-        ],
-      ),
+                  );
+                },
+                itemCount: section.items.length,
+              ),
+            ],
+          ),
+      ],
     );
   }
 }

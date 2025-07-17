@@ -14,24 +14,32 @@ class _Case2State extends State<Case2> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Text('Hello World!'),
-        SizedBox(height: 20),
-        for (final item in items)
-          ListTile(
-            key: ValueKey(item),
-            title: Text(item),
-            subtitle: Text('Subtitle for $item'),
-            leading: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                setState(() {
-                  items.remove(item);
-                });
-              },
-            ),
-          ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Text('Hello World!'),
+        ),
+        SliverPadding(padding: EdgeInsets.all(20)),
+        SliverFixedExtentList.builder(
+          itemCount: items.length,
+          itemExtent: 60,
+          itemBuilder: (context, index) {
+            final item = items[index];
+            return ListTile(
+              key: ValueKey(item),
+              title: Text(item),
+              subtitle: Text('Subtitle for $item'),
+              leading: IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () {
+                  setState(() {
+                    items.remove(item);
+                  });
+                },
+              ),
+            );
+          },
+        ),
       ],
     );
   }
