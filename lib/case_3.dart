@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// ListView with horizontal scroll and a vertical list
-/// 
+///
 /// Replace with [CustomScrollView].
 class Case3 extends StatefulWidget {
   const Case3({super.key});
@@ -21,34 +21,33 @@ class _Case3State extends State<Case3> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Text('Hello World!'),
-        SizedBox(height: 20),
-        SizedBox(
-          height: 100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 100,
-            itemBuilder: (context, index) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      'Item $index',
-                      style: TextStyle(fontSize: 18),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(child: Text('Hello World!')),
+        SliverToBoxAdapter(child: SizedBox(height: 20)),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 100,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        'Item $index',
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
-        SizedBox(height: 24),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+        SliverList.builder(
           itemCount: items.length,
           itemBuilder: (context, i) {
             final item = items[i];

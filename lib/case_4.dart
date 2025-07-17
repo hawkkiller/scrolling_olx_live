@@ -3,38 +3,39 @@ import 'package:flutter/material.dart';
 /// - Padding applied to the entire screen.
 /// - Sticky headers for each section.
 /// - Each section has a title and a list of items.
-/// 
+///
 /// Replace with [CustomScrollView], [SliverList], [SliverMainAxisGroup], [SliverAppBar].
 class Case4 extends StatelessWidget {
   const Case4({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: ListView(
-        children: [
-          for (final section in sections)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Text(
-                    section.title,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                ...section.items.map(
-                  (item) => ListTile(
+    return CustomScrollView(
+      slivers: [
+        for (final section in sections)
+          SliverMainAxisGroup(
+            slivers: [
+              SliverAppBar(
+                title: Text(section.title),
+                pinned: true,
+                backgroundColor: Colors.white,
+              ),
+              SliverList.builder(
+                itemCount: section.items.length,
+                itemBuilder: (context, index) {
+                  final item = section.items[index];
+
+                  return ListTile(
                     title: Text(item.title),
                     subtitle: Text(item.description),
-                  ),
-                ),
-              ],
-            ),
-        ],
-      ),
+                    leading: Icon(Icons.label),
+                    trailing: Icon(Icons.arrow_forward),
+                  );
+                },
+              ),
+            ],
+          ),
+      ],
     );
   }
 }
